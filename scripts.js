@@ -45,8 +45,10 @@ function calculateInvestment() {
   if (rateType === 'pre') {
       M = P * Math.pow(1 + r, n) + C * ((Math.pow(1 + r, n) - 1) / r);
   } else if (rateType === 'pos') {
-      const cdiRate = 10.4 / 100 / 12;
-      M = P * Math.pow(1 + cdiRate, n) + C * ((Math.pow(1 + cdiRate, n) - 1) / cdiRate);
+      const cdiRate = 10.4 / 100; // Taxa anual do CDI
+      const effectiveRate = cdiRate * rateAnnual; // Rentabilidade como percentual do CDI
+      const monthlyRate = effectiveRate / 12;
+      M = P * Math.pow(1 + monthlyRate, n) + C * ((Math.pow(1 + monthlyRate, n) - 1) / monthlyRate);
   } else if (rateType === 'ipca') {
       const i = 0.04 / 12; // Supondo uma inflação anual de 4%
       M = P * Math.pow(1 + r + i, n) + C * ((Math.pow(1 + r + i, n) - 1) / (r + i));
