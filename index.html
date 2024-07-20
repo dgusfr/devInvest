@@ -17,22 +17,34 @@
     <form id="investment-form">
       <div class="form-group">
         <label>Tipo de investimento:</label>
-        <input type="radio" id="cdb" name="investment-type" value="cdb" checked onclick="togglePeriodInput()">
-        <label for="cdb">CDB</label>
-        <input type="radio" id="lci" name="investment-type" value="lci" onclick="togglePeriodInput()">
-        <label for="lci">LCI/LCA</label>
-        <input type="radio" id="tesouro" name="investment-type" value="tesouro" onclick="togglePeriodInput()">
-        <label for="tesouro">Tesouro</label>
+        <div class="radio-group">
+          <input type="radio" id="cdb" name="investment-type" value="cdb" checked onclick="togglePeriodInput()">
+          <label for="cdb">CDB</label>
+        </div>
+        <div class="radio-group">
+          <input type="radio" id="lci" name="investment-type" value="lci" onclick="togglePeriodInput()">
+          <label for="lci">LCI/LCA</label>
+        </div>
+        <div class="radio-group">
+          <input type="radio" id="tesouro" name="investment-type" value="tesouro" onclick="togglePeriodInput()">
+          <label for="tesouro">Tesouro</label>
+        </div>
       </div>
 
       <div class="form-group">
         <label>É PRÉ fixado ou PÓS fixado?</label>
-        <input type="radio" id="pre" name="rate-type" value="pre" checked onclick="togglePeriodInput()">
-        <label for="pre">PRÉ</label>
-        <input type="radio" id="pos" name="rate-type" value="pos" onclick="togglePeriodInput()">
-        <label for="pos">PÓS</label>
-        <input type="radio" id="ipca" name="rate-type" value="ipca" onclick="togglePeriodInput()">
-        <label for="ipca">IPCA</label>
+        <div class="radio-group">
+          <input type="radio" id="pre" name="rate-type" value="pre" checked onclick="togglePeriodInput()">
+          <label for="pre">PRÉ</label>
+        </div>
+        <div class="radio-group">
+          <input type="radio" id="pos" name="rate-type" value="pos" onclick="togglePeriodInput()">
+          <label for="pos">PÓS</label>
+        </div>
+        <div class="radio-group">
+          <input type="radio" id="ipca" name="rate-type" value="ipca" onclick="togglePeriodInput()">
+          <label for="ipca">IPCA</label>
+        </div>
       </div>
 
       <div class="form-group">
