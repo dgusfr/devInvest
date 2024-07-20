@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Investimentos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Calculadora de Investimentos Online</h1>
+    <form id="investment-form">
+      <div class="form-group">
+        <label>Tipo de investimento:</label>
+        <input type="radio" id="cdb" name="investment-type" value="cdb" checked>
+        <label for="cdb">CDB</label>
+        <input type="radio" id="lci" name="investment-type" value="lci">
+        <label for="lci">LCI/LCA</label>
+        <input type="radio" id="tesouro" name="investment-type" value="tesouro">
+        <label for="tesouro">Tesouro</label>
+      </div>
+
+      <div class="form-group">
+        <label>É PRÉ fixado ou PÓS fixado?</label>
+        <input type="radio" id="pre" name="rate-type" value="pre" checked>
+        <label for="pre">PRÉ</label>
+        <input type="radio" id="pos" name="rate-type" value="pos">
+        <label for="pos">PÓS</label>
+        <input type="radio" id="ipca" name="rate-type" value="ipca">
+        <label for="ipca">IPCA</label>
+      </div>
+
+      <div class="form-group">
+        <label for="initial-investment">Investimento Inicial (R$):</label>
+        <input type="text" id="initial-investment" oninput="formatCurrency(this)" required>
+      </div>
+
+      <div class="form-group">
+        <label for="monthly-investment">Investimento Mensal (R$):</label>
+        <input type="text" id="monthly-investment" oninput="formatCurrency(this)" required>
+      </div>
+
+      <div class="form-group">
+        <label for="period">Prazo:</label>
+        <input type="number" id="period" required>
+        <select id="period-type">
+          <option value="months">Meses</option>
+          <option value="years">Anos</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="rate">Rentabilidade:</label>
+        <input type="number" id="rate" step="0.01" required>
+        <select id="rate-type">
+          <option value="annual">Anual</option>
+          <option value="monthly">Mensal</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <button type="button" onclick="calculateInvestment()">CALCULAR</button>
+        <button type="reset">LIMPAR</button>
+      </div>
+    </form>
+    <div id="result"></div>
+  </div>
+  <script src="scripts.js"></script>
+</body>
+
+</html>
