@@ -14,21 +14,21 @@
     <form id="investment-form">
       <div class="form-group">
         <label>Tipo de investimento:</label>
-        <input type="radio" id="cdb" name="investment-type" value="cdb" checked>
+        <input type="radio" id="cdb" name="investment-type" value="cdb" checked onclick="togglePeriodInput()">
         <label for="cdb">CDB</label>
-        <input type="radio" id="lci" name="investment-type" value="lci">
+        <input type="radio" id="lci" name="investment-type" value="lci" onclick="togglePeriodInput()">
         <label for="lci">LCI/LCA</label>
-        <input type="radio" id="tesouro" name="investment-type" value="tesouro">
+        <input type="radio" id="tesouro" name="investment-type" value="tesouro" onclick="togglePeriodInput()">
         <label for="tesouro">Tesouro</label>
       </div>
 
       <div class="form-group">
         <label>É PRÉ fixado ou PÓS fixado?</label>
-        <input type="radio" id="pre" name="rate-type" value="pre" checked>
+        <input type="radio" id="pre" name="rate-type" value="pre" checked onclick="togglePeriodInput()">
         <label for="pre">PRÉ</label>
-        <input type="radio" id="pos" name="rate-type" value="pos">
+        <input type="radio" id="pos" name="rate-type" value="pos" onclick="togglePeriodInput()">
         <label for="pos">PÓS</label>
-        <input type="radio" id="ipca" name="rate-type" value="ipca">
+        <input type="radio" id="ipca" name="rate-type" value="ipca" onclick="togglePeriodInput()">
         <label for="ipca">IPCA</label>
       </div>
 
@@ -42,7 +42,7 @@
         <input type="text" id="monthly-investment" oninput="formatCurrency(this)" required>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" id="period-group">
         <label for="period">Prazo:</label>
         <input type="number" id="period" required>
         <select id="period-type">
@@ -54,7 +54,7 @@
       <div class="form-group">
         <label for="rate">Rentabilidade:</label>
         <input type="number" id="rate" step="0.01" required>
-        <select id="rate-type">
+        <select id="rate-type-select">
           <option value="annual">Anual</option>
           <option value="monthly">Mensal</option>
         </select>
@@ -62,10 +62,11 @@
 
       <div class="form-group">
         <button type="button" onclick="calculateInvestment()">CALCULAR</button>
-        <button type="reset">LIMPAR</button>
+        <button type="reset" onclick="resetForm()">LIMPAR</button>
       </div>
     </form>
     <div id="result"></div>
+    <div id="cdi-message" style="display: none;">*Valor de CDI considerado 10.4%</div>
   </div>
   <script src="scripts.js"></script>
 </body>
