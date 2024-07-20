@@ -6,6 +6,21 @@ function formatCurrency(input) {
   input.value = value;
 }
 
+function togglePeriodInput() {
+  const rateType = document.querySelector('input[name="rate-type"]:checked').value;
+  const investmentType = document.querySelector('input[name="investment-type"]:checked').value;
+  const periodGroup = document.getElementById('period-group');
+  const cdiMessage = document.getElementById('cdi-message');
+
+  if (rateType === 'pos' && investmentType === 'cdb') {
+      periodGroup.style.display = 'none';
+      cdiMessage.style.display = 'block';
+  } else {
+      periodGroup.style.display = 'block';
+      cdiMessage.style.display = 'none';
+  }
+}
+
 function calculateInvestment() {
   const P = parseFloat(document.getElementById('initial-investment').value.replace(/\./g, '').replace(',', '.'));
   const C = parseFloat(document.getElementById('monthly-investment').value.replace(/\./g, '').replace(',', '.'));
@@ -14,10 +29,14 @@ function calculateInvestment() {
   const investmentType = document.querySelector('input[name="investment-type"]:checked').value;
   const rateType = document.querySelector('input[name="rate-type"]:checked').value;
   const periodType = document.getElementById('period-type').value;
-  const rateUnit = document.getElementById('rate-type').value;
+  const rateUnit = document.getElementById('rate-type-select').value;
 
-  if (periodType === 'years') {
-      n = n * 12;
+  if (rateType !== 'pos' || investmentType !== 'cdb') {
+      if (periodType === 'years') {
+          n = n * 12;
+      }
+  } else {
+      n = 24; // Para CDB pós-fixado, usamos 2 anos fixos
   }
 
   let r = rateUnit === 'annual' ? rateAnnual / 12 : rateAnnual;
@@ -26,11 +45,17 @@ function calculateInvestment() {
   if (rateType === 'pre') {
       M = P * Math.pow(1 + r, n) + C * ((Math.pow(1 + r, n) - 1) / r);
   } else if (rateType === 'pos') {
-      M = P * Math.pow(1 + r, n) + C * ((Math.pow(1 + r, n) - 1) / r);
+      const cdiRate = 10.4 / 100 / 12;
+      M = P * Math.pow(1 + cdiRate, n) + C * ((Math.pow(1 + cdiRate, n) - 1) / cdiRate);
   } else if (rateType === 'ipca') {
       const i = 0.04 / 12; // Supondo uma inflação anual de 4%
       M = P * Math.pow(1 + r + i, n) + C * ((Math.pow(1 + r + i, n) - 1) / (r + i));
   }
 
   document.getElementById('result').innerHTML = `Valor acumulado: R$ ${M.toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+\,)/g, "$1.")}`;
+}
+
+function resetForm() {
+  document.getElementById('cdi-message').style.display = 'none';
+  document.getElementById('period-group').style.display = 'block';
 }
