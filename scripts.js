@@ -11,13 +11,16 @@ function togglePeriodInput() {
   const investmentType = document.querySelector('input[name="investment-type"]:checked').value;
   const periodGroup = document.getElementById('period-group');
   const cdiMessage = document.getElementById('cdi-message');
+  const rateUnitSelect = document.querySelector('.rate-unit');
 
   if (rateType === 'pos' && investmentType === 'cdb') {
       periodGroup.style.display = 'none';
       cdiMessage.style.display = 'block';
+      rateUnitSelect.classList.add('hidden');
   } else {
       periodGroup.style.display = 'block';
       cdiMessage.style.display = 'none';
+      rateUnitSelect.classList.remove('hidden');
   }
 }
 
@@ -60,4 +63,5 @@ function calculateInvestment() {
 function resetForm() {
   document.getElementById('cdi-message').style.display = 'none';
   document.getElementById('period-group').style.display = 'block';
+  document.querySelector('.rate-unit').classList.remove('hidden');
 }
