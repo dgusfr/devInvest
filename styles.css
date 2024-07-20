@@ -1,38 +1,53 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  background-color: #f5f5fa;
   margin: 0;
   padding: 0;
 }
 
+header {
+  background-color: #4a90e2;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
 .container {
-  max-width: 600px;
-  margin: 50px auto;
+  max-width: 800px;
+  margin: 100px auto 50px auto;
   padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
 
-h1 {
-  text-align: center;
+h1, h2 {
+  margin: 0;
   color: #333;
 }
 
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .form-group {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 20px;
 }
 
 label {
-  display: block;
   margin-bottom: 5px;
   color: #555;
 }
 
 input[type="text"], input[type="number"], select, button {
-  width: 100%;
   padding: 10px;
-  margin-top: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
@@ -42,15 +57,16 @@ input[type="radio"] {
 }
 
 button {
-  background-color: #007bff;
+  background-color: #4a90e2;
   color: white;
   border: none;
   cursor: pointer;
   margin-top: 10px;
+  padding: 15px;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #357ab8;
 }
 
 #result {
@@ -62,3 +78,9 @@ button:hover {
   display: none;
 }
 
+#cdi-message {
+  color: #d9534f;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
